@@ -1,0 +1,30 @@
+- unless current_user.kind_of?(Manager)
+  %span.left
+    = link_to 'About', about_path
+    &nbsp;
+    = link_to 'Support', "http://getsatisfaction.com/wfas", :target => "_blank"
+    &nbsp;
+    = link_to 'Survey', "http://workforastartup.wufoo.com/forms/web-site-visitor-survey/", :target => "_blank"
+    &nbsp;
+    = link_to 'Facebook', "http://www.facebook.com/group.php?gid=69184864509", :target => "_blank"
+    &nbsp;
+    = link_to 'Linkedin', "http://www.linkedin.com/groups?home=&gid=1909801&trk=anet_ug_hm/", :target => "_blank"
+    &nbsp;
+    = link_to 'Twitter', 'http://twitter.com/workforastartup', :target => "_blank"
+    &nbsp;
+    = link_to 'Contact', contact_path
+%span.right
+  - if logged_in?
+    %span.quiet
+      Welcome
+      = current_user.kind_of?(Startup) ? link_to(current_user.name, myaccount_root_path) : current_user.name
+      [
+      = link_to 'Logout', logout_path
+      ]
+  - else
+    %span.quiet
+      Startups: post your jobs now. It's free. [
+      = link_to 'Login',login_path
+      or
+      = link_to 'Signup', signup_path
+      ]

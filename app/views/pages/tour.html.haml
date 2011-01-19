@@ -1,0 +1,32 @@
+= content_for :breadcrumbs do
+  = link_to 'Home', root_path
+  &raquo;
+  Tour
+
+-cache(:controller => "base", :action => "tour", :tour => "video") do
+  #tour_video
+    %h2 A quick video tour
+    <embed src="http://blip.tv/play/Afq1UgA" type="application/x-shockwave-flash" width="480" height="350" allowscriptaccess="always" allowfullscreen="true"></embed>
+   
+= content_for :tour do
+  -cache(:controller => "base", :action => "tour", :tour => "images") do 
+    #tour
+      .container
+        %h3 Jobs screen 1
+        = image_tag('tour/wfas-home-updated.gif', :width=>"100%")
+
+        %h3 Jobs screen 2
+        = image_tag('tour/wfas-home-footer-updated.gif', :width=>"100%")
+
+        %h3 Job details screen
+        = image_tag('tour/wfas-job-updated.gif', :width=>"100%")
+
+        %h3 Startups screen
+        = image_tag('tour/wfas-startups-updated.gif', :width=>"100%")
+
+        %h3 Startup details screen
+        = image_tag('tour/wfas-startup-updated.gif', :width=>"100%")
+
+        %h3 Startup 'My Account' screen
+        = image_tag('tour/wfas-myaccount-updated.gif', :width=>"100%")
+        

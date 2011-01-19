@@ -1,0 +1,44 @@
+# == Schema Information
+# Schema version: 20090619053741
+#
+# Table name: jobs
+#
+#  id               :integer(4)      not null, primary key
+#  title            :string(255)
+#  startup_id       :integer(4)
+#  location         :string(255)
+#  created_at       :datetime
+#  updated_at       :datetime
+#  overview         :text
+#  responsibilities :text
+#  experience       :text
+#  education        :text
+#  compensation     :text
+#  skills           :text
+#  cached_tag_list  :string(255)
+#  industry_id      :integer(4)
+#  expires_at       :datetime
+#  renewed_at       :datetime
+#  state            :string(255)
+#  auto_renewal     :boolean(1)      default(TRUE)
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: First Dummy Job
+  startup_id: 1
+  description: This is First Dummy Job
+  email: MyString
+  phone: MyString
+  location: MyString
+  url: MyString
+
+two:
+  title: Second Dummy Job
+  startup_id: 1
+  description: This is Second Dummy Job
+  email: MyString
+  phone: MyString
+  location: MyString
+  url: MyString

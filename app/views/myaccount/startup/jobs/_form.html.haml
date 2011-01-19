@@ -1,0 +1,75 @@
+= javascript_include_tag :defaults, :cache => true
+
+%p
+  = f.label :tag_list
+  *
+  %br/
+  %span.quiet 
+    (seperate with space)
+  %br/
+  %span.quiet 
+    e.g. Java Agile Struts Grails
+  %br/
+  %span.red 
+    Please do not use any symbols in tag. Just keep it simple as example above
+  %br/
+  = text_field_with_auto_complete :job, :tag_list, { :size => 40 }, { :url => tag_suggestions_myaccount_startup_jobs_path(:js), :method => :get, :tokens => ' ', :with => "'search=' + element.value.split(' ').pop()", :frequency => 0.05 }
+        
+%p
+  = f.label :overview
+  *
+  %br/
+  %span.quiet
+    * must be graduate
+    %br/
+    * must know Java, Struts and XML
+  %br/
+  %span.red 
+    Put *(star) infront of the line to create list
+  %br/
+  %span.quiet
+    Refer
+    = link_to 'Textile', 'http://www.textism.com/tools/textile/', :target => "_blank"
+    to use HTML inside text
+  %br/
+  = f.text_area :overview
+
+%p
+  = f.label :responsibilities
+  %br/
+  %span.quiet
+    * hands-on web development
+  %br/
+  = f.text_area :responsibilities
+    
+%p
+  = f.label :experience
+  %br/
+  %span.quiet
+    * 4+ years J2EE
+  %br/
+  = f.text_area :experience
+  
+%p
+  = f.label :education
+  %br/
+  %span.quiet
+    * B.Tech/BCA/BSc
+  %br/
+  = f.text_area :education
+    
+%p
+  = f.label :skills
+  %br/
+  %span.quiet
+    * good spoken and written english
+  %br/
+  = f.text_area :skills
+      
+%p
+  = f.label :compensation
+  %br/
+  %span.quiet
+    * 25k per month + 5% equity
+  %br/
+  = f.text_area :compensation

@@ -1,0 +1,50 @@
+.left.span-16
+  %div{:style=>"float:right; padding: 20px;"}
+    * Required fields
+  %h3{:style=>"border-bottom: 1px solid #193D7D; background: #C3D9FF; padding: 10px 10px; margin: 10px 0px;"}
+    Account Information
+  %div{:style=>"padding: 0px 10px;"}
+    %span.quiet
+      All notifications will be emailed to this address
+    %p
+      = f.text_field :email, :label => "Email *"
+    %p
+      = f.password_field :password, :label => "Password *"
+    %p
+      = f.password_field :password_confirmation, :label => "Confirm Password *"
+  
+  %div{:style=>"float:right; padding: 20px;"}
+    * Required fields
+  %h3{:style=>"border-bottom: 1px solid #193D7D; background: #C3D9FF; padding: 10px 10px; margin: 10px 0px;"}
+    Company Information
+  %div{:style=>"padding: 0px 10px;"}
+    %p
+      = f.text_field :name, :label => "Startup Name *"
+    - f.fields_for :startup_profile do |cf|
+      %p  
+        = cf.text_field :url, :label => "Website *"
+      %p
+        = cf.select("industry_id", Industry.find(:all).collect {|i| [ i.name, i.id ] }, :label => "Industry *")
+      %p
+        = cf.text_field :employees, :label => "Employees *"
+      %p
+        %fieldset{:style=>"margin-bottom:0px; background: #EEE;"}
+          %legend{:style=>"margin-left:-18px;"}
+            Address
+          %span.quiet
+            So that we can find you on Google maps!
+          %p
+            = cf.text_field :address1, :label => "Street *"
+          %p
+            = cf.text_field :city, :label => "City *"
+          %p
+            = cf.state_select :state, :country => "India", :label => "State *"
+  %br/
+  %p
+    By clicking Sign Up, you are indicating that you have read and that you agree to our 
+    = link_to "Terms of Service.", terms_path
+  %br/        
+  %p
+    = submit_tag 'Sign up'
+    or
+    = link_to "Login", login_path

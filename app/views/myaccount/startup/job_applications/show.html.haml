@@ -1,0 +1,36 @@
+= content_for :breadcrumbs do
+  = link_to 'My Account', myaccount_startup_profile_path
+  &raquo;
+  = link_to 'Job Openings', myaccount_startup_jobs_path
+  &raquo;
+  = link_to @myaccount_startup_job_application.job.title, myaccount_startup_job_path(@myaccount_startup_job_application.job)
+  &raquo;
+  = link_to 'Job Applications', myaccount_startup_job_applications_path(@myaccount_startup_job_application.job)
+  &raquo;
+  = @myaccount_startup_job_application.subject
+  
+.heading.span-15
+  .span-15
+    %h2.title= @myaccount_startup_job_application.subject  
+    %p
+      = link_to 'Download Resume', myaccount_startup_job_get_resume_path(@myaccount_startup_job_application.job, @myaccount_startup_job_application) 
+    %p.quiet.regular
+      = @myaccount_startup_job_application.created_at.to_date.to_formatted_s(:long)
+
+.heading.span-15 
+  %span.bold Job Opening:
+  .quiet= @myaccount_startup_job_application.job.title
+        
+.heading.span-15 
+  %span.bold Cover Letter:
+  .quiet= @myaccount_startup_job_application.cover_letter
+
+.heading.span-15 
+  %span.bold Name:
+  .quiet= @myaccount_startup_job_application.name
+            
+.heading.span-15 
+  %span.bold Email:
+  .quiet= @myaccount_startup_job_application.email
+
+= link_to 'All Job Applications', myaccount_startup_all_job_applications_path 

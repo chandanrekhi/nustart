@@ -1,0 +1,11 @@
+%h1 Editing Industry
+
+- form_for([:admin, @admin_industry]) do |f|
+
+  = render :partial => 'form', :locals => {:f => f}
+  %p
+    = f.submit "Update"
+
+= link_to 'Show', admin_industry_path(@admin_industry)
+|
+= link_to 'Back', admin_industries_path

@@ -1,0 +1,27 @@
+%h1 Listing Jobs
+
+%table{ :cellspacing => 0, :cellpadding => 0}
+  %thead
+    %tr
+      %th Title
+      %th
+      %th Startup
+      %th Location
+      %th
+  %tbody
+    - for job in @admin_jobs
+      %tr
+        %td.title.span-10
+          = link_to shorten(job.title, 75), admin_job_path(job)
+        %td.span-2.logo
+          = link_to(image_tag(job.startup.startup_profile.logo.url(:thumb)), admin_user_path(job.startup)) unless job.startup.startup_profile.logo_file_name.nil?
+        %td.span-6
+          = link_to job.startup.name, admin_user_path(job.startup)
+        %td.span-3
+          = job.location? ? job.location : job.startup.startup_profile.city
+        %td
+          = link_to 'Edit', edit_admin_job_path(job)
+
+= will_paginate @admin_jobs 
+
+= link_to 'New job', new_admin_job_path

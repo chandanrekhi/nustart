@@ -1,0 +1,77 @@
+= f.error_messages
+
+%p
+  = f.label :about
+  * 
+  %br/
+  %span.quiet
+    Acme Solutions is a company with twist.
+    %br/
+    * headquarted in Roxy Terrain on Moon
+    %br/
+    * does a lot of software and web development for aliens
+  %br/
+  %span.red 
+    Put *(star) infront of the line to create list
+  %br/  
+  %span.quiet
+    Refer
+    = link_to 'Textile', 'http://www.textism.com/tools/textile/', :target => "_blank"
+    to use HTML inside text
+  %br/
+  = f.text_area :about 
+
+%p
+  = f.label :industry 
+  * 
+  %br/
+  = f.select("industry_id", Industry.find(:all).collect {|i| [ i.name, i.id ] }) 
+
+%p
+  = f.label :url  
+  * 
+  %br/
+  = f.text_field :url 
+
+%p
+  = f.label :logo  
+  = f.file_field :logo 
+
+%p
+  = f.label :funding 
+  %br/
+  = f.check_box :funding 
+
+%p
+  = f.label :employees  
+  * 
+  %br/
+  = f.text_field :employees 
+
+%p
+  = f.label :address1  
+  * 
+  %br/
+  = f.text_field :address1 
+
+%p
+  = f.label :address2 
+  %br/
+  = f.text_field :address2 
+
+%p
+  = f.label :city  
+  * 
+  %br/
+  = f.text_field :city 
+
+%p
+  = f.label :state  
+  * 
+  %br/
+  = f.text_field :state 
+
+%p
+  = f.label :pincode 
+  %br/
+  = f.text_field :pincode 

@@ -1,0 +1,21 @@
+%h1 Displaying Industry
+
+%p 
+  %b Name:
+  =h @admin_industry.name 
+
+%p 
+  %b Description:
+  =h @admin_industry.description 
+
+%p 
+  %b Created at:
+  =h @admin_industry.created_at 
+
+%p 
+  %b Updated at:
+  =h @admin_industry.updated_at 
+
+= link_to 'Edit', edit_admin_industry_path(@admin_industry) 
+|
+= link_to 'Back', admin_industries_path 

@@ -1,0 +1,40 @@
+= f.error_messages
+
+%p
+  = f.label :name
+  *
+  %br/
+  %span.quiet
+    e.g. John Smith
+  %br/
+  = f.text_field :name
+
+%p
+  = f.label :email
+  *
+  %br/
+  %span.red
+    Please enter valid email address so that startups can contact you
+  %br/
+  = f.text_field :email  
+   
+%p
+  = f.label :subject 
+  *
+  %br/
+  %span.quiet
+    e.g. 5+ years experience as Java consultant
+  %br/
+  = f.text_field :subject 
+
+%p
+  = f.label :cover_letter
+  *
+  %br/
+  = f.text_area :cover_letter 
+
+%p
+  = f.label :resume
+  *
+  %br/
+  = f.file_field :resume

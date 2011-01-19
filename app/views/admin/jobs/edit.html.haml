@@ -1,0 +1,11 @@
+%h1 Editing Job
+
+- form_for([:admin, @admin_job]) do |f|
+
+  = render :partial => 'form', :locals => {:f => f}
+  %p
+    = f.submit "Update"
+
+= link_to 'Show', admin_job_path(@admin_job)
+|
+= link_to 'Back', admin_jobs_path

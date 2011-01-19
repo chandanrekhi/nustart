@@ -1,0 +1,99 @@
+= content_for :breadcrumbs do
+  = link_to 'Home', root_path
+  &raquo;
+  FAQ
+  
+-cache(:controller => "base", :action => "faq") do
+  %h3 FAQ
+
+  .heading
+    %p.bold
+      How shall I apply for a job opening?
+    %p.quiet.regular
+      You can find a suitable job opening from
+      = link_to 'jobs list', jobs_path
+      and then can apply for it. There is NO signup and login to apply for a job, and it is FREE!     
+    
+  .heading 
+    %p.bold 
+      How shall I create a job opening?
+    %p.quiet.regular
+      You have to
+      = link_to "create a profile", signup_path
+      before you can post a job opening. If you have already created one you can always
+      = link_to 'login', login_path
+      and go to 
+      = link_to 'Post a Job', new_myaccount_startup_job_path
+      tab to create new job opening.
+    
+  .heading 
+    %p.bold 
+      What does it cost to create a job opening?
+    %p.quiet.regular
+      It costs nothing as we provide you free service to post new job openings at your startup.
+
+  .heading
+    %p.bold
+      Why doesn't WorkForAStartup list enough Industries? My startup doesn't fit in any of the listed ones.
+    %p.quiet.regular
+      We don't want to bloat our webpages with a huge list of Industries. Please don't be myopic and select a wider Industry which suits your startup's longer vision.
+  
+  .heading
+    %p.bold
+      How long does a job opening stays listed on Workforastartup?
+    %p.quiet.regular
+      All job openings expire after 1 month and automatically renewed for next month, but you can
+      = link_to 'login', login_path
+      to your profile and cancel automatic renewal for a particular job anytime.
+
+  .heading
+    %p.bold
+      Where can I see resumes I receive for my job postings?
+    %p.quiet.regular
+      We notify you by email whenever you receive a new application for your job opening. You either click the url inside that email or can always
+      = link_to 'login', login_path
+      to your account and click
+      = link_to 'job applications', myaccount_startup_all_job_applications_path
+      tab to view all resumes.
+    
+  .heading
+    %p.bold
+      How do you earn money?
+    %p.quiet.regular
+      Currently, Workforastartup is a free service and there is no source available for revenue generation. But yes, in future we will be launching premium services, not free, and other innovative ideas for the benefit of startups and applicants.
+    %p.quiet.regular
+      If you want us to keep you providing free Job Board service, please help us by advertising on WorkForAStartup.
+
+  .heading
+    %p.bold
+      How can I advertise on WorkForAStartup?
+    %p.quiet.regular
+      Please contact us
+      = link_to 'here', contact_path
+      to get details on how to advertise.
+    
+  .heading
+    %p.bold
+      What is the difference between other popular job boards and WorkForAStartup?
+    %p.quiet.regular
+      The only subtle difference is that we provide services exclusively to Indian startups. The other popular job boards are for HR agencies and corporates. If you are interested to work for a startup then you are at right place.
+    
+  .heading
+    %p.bold
+      How does WorkForAStartup reach wider audience?
+    %p.quiet.regular
+      We use (or will use in future) social tools such as Twitter, Facebook etc to make sure your job openings reach to wider audience. Also, we have built associations with colleges, universities, and other services targeting startups which complement WorkFoRAStartup's services.
+    %p.quiet.regular
+      Currently, we post your job postings, when you create/renew them, on Twitter only. Note:- There might be one hour delay in posting your job opening on Twitter. Also, if you feel your job opening wasn't posted on Twitter please contact us.
+    
+  .heading
+    %p.bold
+      Which technology does WorkForAStartup runs on?
+    %p.quiet.regular
+      WorkForAStartup is built on Ruby and Rails, and uses Apache to serve content.
+  
+  .heading
+    %p.bold
+      Why doesn't Workforastartup look good in IE (Internet Explorer)?
+    %p.quiet.regular
+      Because IE is the worst web browser ever. if you are on Windows or Linux please use Firefox or Opera. If you are on OSX please use Safari, Firefox or Opera.

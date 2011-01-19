@@ -1,0 +1,18 @@
+= content_for :breadcrumbs do
+  - if @query
+    = link_to 'Jobs', jobs_path
+    &raquo;
+    = @query
+    
+- @jobs = (@resultset and !@resultset.empty?) ? @resultset : []
+
+- if @correction
+  %h3
+    Did you mean
+    = link_to @correction, :controller => "search", :action => "index", :query => @correction
+- else
+  = render :partial => "jobs/jobs"
+
+= link_to 'All Jobs', jobs_path
+
+= will_paginate WillPaginate::Collection.new(@page, @per_page, @search.matches_estimated)

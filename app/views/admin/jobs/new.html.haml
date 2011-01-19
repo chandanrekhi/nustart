@@ -1,0 +1,9 @@
+%h1 New Job
+
+- form_for([:admin, @admin_job]) do |f|
+
+  = render :partial => 'form', :locals => {:f => f}
+  %p
+    = f.submit "Create"
+
+= link_to 'Back', admin_jobs_path

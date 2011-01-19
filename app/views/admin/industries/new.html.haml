@@ -1,0 +1,9 @@
+%h1 New Industry
+
+- form_for([:admin, @admin_industry]) do |f|
+
+  = render :partial => 'form', :locals => {:f => f}
+  %p
+    = f.submit "Create"
+
+= link_to 'Back', admin_industries_path

@@ -1,0 +1,7 @@
+%h4 Browse All Jobs by Industry
+- unless read_fragment({})
+  - @industries = Industry.find(:all)
+  %ul
+    - for industry in @industries
+      %li 
+        = link_to industry.name, jobs_by_industry_path(industry, :html), :title => "#{industry.description}"

@@ -1,0 +1,15 @@
+- if @count > 0
+  Displaying
+  = @page > 1 ? ((@page-1)*@per_page)+1 : 1
+  = "-" 
+  = (@page*@per_page) > @count ? @count : @page*@per_page
+  of 
+  = @count
+  total Applications
+- else
+  No Applications found
+  
+- if @myaccount_startup_job
+  for Job
+  %span.quiet.underline
+    = @myaccount_startup_job.title

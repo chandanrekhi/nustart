@@ -1,0 +1,4 @@
+= render :partial => "startups"
+- if @letter
+  = link_to "All Startups", startups_path
+= will_paginate @startups

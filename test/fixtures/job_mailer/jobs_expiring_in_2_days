@@ -1,0 +1,3 @@
+JobMailer#jobs_expiring_in_2_days
+
+Find me in app/views/job_mailer/jobs_expiring_in_2_days.erb

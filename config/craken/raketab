@@ -1,0 +1,4 @@
+*/10 * * * * xapian:update_index > /tmp/xapian_update_index.log 2>&1
+0 */1 * * * jobs:post_to_twitter > /tmp/jobs_notification.log 2>&1
+0 */8 * * * jobs:notify_renewed > /tmp/jobs_notification.log 2>&1
+0 0 * * * db:backup > /tmp/db_backup.log 2>&1

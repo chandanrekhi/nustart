@@ -1,0 +1,59 @@
+= content_for :breadcrumbs do
+  = link_to 'Home', root_path
+  &raquo;
+  = link_to 'Startups', startups_path
+  &raquo;
+  = @startup.name
+  
+= content_for :sidebar do 
+  .sidebar-container.span-6
+    %h4 
+      Job Openings at
+      %span.quiet.underline= @startup.name
+    %ul
+      - @startup_jobs = @startup.jobs.find(:all)
+      - unless @startup_jobs.empty?
+        -cache( :all_jobs => "all_jobs", :id => @startup.id ) do
+          - for job in @startup_jobs
+            %li 
+              = link_to job.title, job_path(job), :title => "#{job.overview_source}"
+      - else
+        No job openings
+  %hr
+
+-cache( :id => @startup ) do
+  .heading.span-16#title-heading
+    .span-11   
+      %h2.title= @startup.name
+      = link_to @startup.startup_profile.url, @startup.startup_profile.url, :target => "_blank", :class => "name-link"
+    .logo.span-4
+      = image_tag @startup.startup_profile.logo.url(:small)
+  .heading.span-16#about
+    = @startup.startup_profile.about.blank? ? "just another startup ..." : @startup.startup_profile.about
+  .heading.span-16
+    .span-7
+      Member since:
+      .quiet
+        = @startup.created_at.to_date.to_formatted_s(:long)
+    .span-7
+      Industry:
+      .quiet
+        = @startup.startup_profile.industry ? @startup.startup_profile.industry.name : ""
+  .heading.span-16
+    .span-7
+      Funded:
+      .quiet
+        = @startup.startup_profile.funding == true ? "Yes" : "No"
+    .span-7
+      Employees:
+      .quiet
+        = @startup.startup_profile.employees     
+  .heading.span-16
+    address:
+    .quiet
+      = @startup.startup_profile.full_address + (@startup.startup_profile.pincode ? @startup.startup_profile.pincode.to_s : "")
+  - if @map
+    %p
+      = image_tag(@map.url)
+      
+  = link_to 'All Startups', startups_path

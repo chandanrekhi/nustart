@@ -1,0 +1,4 @@
+= render :partial => "jobs"        
+- if params[:action] == "listing_by_tag"
+  = link_to 'All Jobs', jobs_path  
+= will_paginate @jobs

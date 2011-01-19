@@ -1,0 +1,9 @@
+= javascript_include_tag :defaults, :cache => true
+
+%p
+  = f.label :startup  
+  * 
+  %br/
+  = f.select("startup_id", @startups.collect {|i| [ i.name, i.id ] })
+  
+= render :partial => "myaccount/startup/jobs/form", :locals => { :f => f }

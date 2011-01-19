@@ -1,0 +1,3 @@
+JobMailer#successfully_updated
+
+Find me in app/views/job_mailer/successfully_updated.erb

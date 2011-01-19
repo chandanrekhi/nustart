@@ -1,0 +1,84 @@
+<% content_for :breadcrumbs do %>
+  <%= link_to 'Home', root_path %>
+  &raquo;
+  About
+<% end %>
+
+<% cache(:controller => "base", :action => "about") do %>
+
+  <h3>About Us</h3>
+
+  <div class="regular" style="margin-bottom: 20px;">
+    <p>
+    WorkForAStartup.in is an online job search engine and portal for Indian startups to attract potential talent. I have been towing away with this idea for nearly 4 long years as of now, and a lot got changed during this time period - I moved from Australia to India, switched few jobs working for startups, got married, and felt economic slowdown. But all this time somewhere in the back of my head I had this thing to provide some sort of channel, to startup community, where finding and hiring potential talent is cheap and easy. We (me and Justin) approached heaps of VCs, angel investors, technical advisors etc but none was interested and often compared WFAS to other job portals rather than looking deep into what problem we are trying to solve.
+    </p>
+    <p> 
+      It is not easy for startups to retain talent as tendency is to get experience and then switch jobs to work for big fish, and mostly startups don't have enough funds to give hefty pay packets even if they don't want to loose their best talent. Workforastartup acts like a channel from where startups can keep on finding potential talent interested in working for a startup even when it hurts to let go the best one. 
+    </p>
+    <p class="regular quiet">
+      Chetan Mittal
+      <br />
+      Founder @ Workforastartup
+    </p>
+  </div>
+ 
+  <div class="heading">For Startups</div>
+  <div class="regular">
+    <p>We are here to do two things:
+      <ul>
+        <li>Help the right job seekers find you.</li>
+        <li>Make the whole team&ndash;building process as easy as possible.</li>
+      </ul>
+    </p>
+    <p>
+      And it's pretty easy; build your profile and we integrate it with every job posting. Post a job once, and renew it multiple times anytime it expires after thirty days (that's right). When someone applies for one of your jobs, we send you an email notification with url where you can refer to this application anytime in future. We store all of job postings and their applications in a user&ndash;friendly list, and make it simple to update your profile, add team comments to job applications. Also, you can post job openings for multiple company branches, all under the same profile. We think you'll like it, but check it out for yourself.
+    </p>
+
+    <p>
+      Oh! we almost forgot to mention; it's free.
+      <br /><br />
+      Create a profile and start <a href="../signup/">posting jobs now</a>. It's FREE!
+      <br />
+      Don't forget to check Workforastartup's <a href="http://workforastartup.in/startups/2-WorkForAStartup" title="workforastartup's profile">profile</a> for reference.
+    </p>
+  </div>
+
+  <div class="heading">For Job Seekers</div>
+  <div class="regular">
+    <p>
+      We have two main goals for job seekers:
+      <ul>
+        <li>To help you learn as much as possible about growing startups so you can find where you fit best.</li>
+        <li>To make the job search process as fun and easy as possible.</li>
+      </ul>
+    </p>
+    <p>
+      We've tried to include the features and functionality that we have all come to expect from our digital tools. Startup profiles are integrated with the job postings themselves &ndash; pretty smoothly, if we do say so ourselves &ndash; and we've including capabilities such as social bookmarking, email, RSS feeds (both general and for specific searches), and maps. Everything is searchable &ndash; try adjusting your search options to find startups and jobs that are right in your sweet spot.
+      <br /><br />
+      And the best part? We're excited to say that this is just the beginning.
+      <br /><br />
+      Ready? You can either go straight for <a href="../">startup jobs</a>, or find the <a href="../startups/">perfect startup</a> first!
+    </p>
+  </div>
+
+  <div class="heading">Why Workforastartup?</div>
+  <div class="regular">
+    <p>
+      We're passionate about startups.
+      <br /><br />
+      How many situations exist in which a few smart people locked in a room can change the course of an industry &ndash; or the world? We don't exactly know, but we're sure there aren't many. We &ndash; all of us that are part of this startup industry, so to speak &ndash; are lucky enough to live at a crazy intersection of vision, capital, and appetite for risk. We're here to create great technologies and businesses that change the way we work and play. If you don't think you can shake things up with just a small team and a few people who believe in you, you're in the wrong business. For those of you that know this is where you're supposed to be, Workforastartup is here to help.
+      <br /><br />
+      Working at a startup is like no other professional experience on earth (or personal experience, for that matter, depending on whose significant other you ask). We work long hours on hard problems in high&ndash;risk ventures. In a startup, every person matters in a way that big companies can't even begin to fathom. And we all get sick of seeing our teammates more than our (other) loved ones.
+      <br /><br />
+      The point is that it takes a certain type of person to work in a startup, to lead this type of life, and to build something important and lasting. This is why we're here. Workforastartup is about startup companies, startup jobs, and the startup people who grow them.
+      <br /><br />
+      We're starting out pretty simple. We have a job board that we think is pretty cool. The most basic building blocks are company profiles, so that job seekers can find the startup that fits them best. Startups build their profile once, and it's attached to every job they post. We've included the design features and functionality that we've come to expect in all of our digital tools, and there's plenty more in the works, too &ndash; we're committed to doing everything we can to help startups build great teams. In the meantime, we'd love to hear from you. Please drop us a line <a href="/pages/contact" title="Contact Us">here</a> and we'll get back to you as soon as we can.
+    </p>
+    <p class="regular quiet">
+      Cheers,
+      <br />
+      Team @ Workforastartup
+    </p>
+  </div>
+  
+<% end %>

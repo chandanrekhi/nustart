@@ -1,0 +1,5 @@
+%a{ :href => "/", :title => "home" }
+  %h1.left.span-10 Work for a startup
+
+- unless current_user.kind_of?(Manager)
+  = render :partial => "layouts/tagline"

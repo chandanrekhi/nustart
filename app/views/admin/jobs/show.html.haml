@@ -1,0 +1,46 @@
+.heading.span-24#title-heading
+  .span-9
+    %h2.title= @admin_job.title
+    %p
+      at 
+      = link_to(@admin_job.startup.name, startup_path(@admin_job.startup), :class=>"name-link")
+      in
+      = @admin_job.location? ? @admin_job.location : @admin_job.startup.startup_profile.city + ", " + @admin_job.startup.startup_profile.state
+    %p
+      %span.quiet.regular= @admin_job.created_at.to_date.to_formatted_s(:long)
+  .logo
+    =image_tag @admin_job.startup.startup_profile.logo.url(:small)
+
+  .span-24
+    %span.bold Tags:
+    .tags.quiet.left
+      = @admin_job.tag_list.to_sentence
+      
+.heading.span-24 
+  %span.bold Overview:
+  .quiet= @admin_job.overview
+
+.heading.span-24 
+  %span.bold Responsibilities:
+  .quiet= @admin_job.responsibilities
+
+.heading.span-24 
+  %span.bold Experience:
+  .quiet= @admin_job.experience
+
+.heading.span-24 
+  %span.bold Education:
+  .quiet= @admin_job.education
+
+.heading.span-24 
+  %span.bold Skills:
+  .quiet= @admin_job.skills
+
+.heading.span-24 
+  %span.bold Compensation:
+  .quiet= @admin_job.compensation
+
+.span-24
+  = link_to 'Edit', edit_admin_job_path(@admin_job)
+  |
+  = link_to 'Back', admin_jobs_path

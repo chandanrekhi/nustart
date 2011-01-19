@@ -1,0 +1,13 @@
+= content_for :breadcrumbs do
+  = link_to 'My Account', myaccount_startup_profile_path
+  &raquo;
+  Profile
+  &raquo;
+  Create
+  
+%h4 Create Profile
+
+- form_for(:startup_profile, @startup_profile, :url => { :controller => "/myaccount/startup/profile" }, :html => { :multipart => true }) do |f|
+  = render :partial => 'form', :locals => {:f => f}
+  %p
+    = f.submit "Create"

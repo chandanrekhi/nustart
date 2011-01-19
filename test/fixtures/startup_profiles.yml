@@ -1,0 +1,32 @@
+# == Schema Information
+# Schema version: 20090619053741
+#
+# Table name: startup_profiles
+#
+#  id                :integer(4)      not null, primary key
+#  address1          :string(40)
+#  address2          :string(40)
+#  city              :string(40)
+#  state             :string(40)
+#  pincode           :integer(4)
+#  url               :string(40)
+#  funding           :boolean(1)
+#  employees         :integer(4)
+#  startup_id        :integer(4)
+#  industry_id       :integer(4)
+#  created_at        :datetime
+#  updated_at        :datetime
+#  logo_file_name    :string(255)
+#  logo_content_type :string(255)
+#  logo_file_size    :integer(4)
+#  logo_updated_at   :datetime
+#  about             :text
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+# one:
+#   column: value
+#
+# two:
+#   column: value

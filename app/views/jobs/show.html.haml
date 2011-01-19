@@ -1,0 +1,12 @@
+= content_for :breadcrumbs do
+  = link_to 'Jobs', jobs_path
+  &raquo;
+  = @job.title
+  
+= render :partial => 'job'
+
+.bottom-links
+  %p#apply_button.text-center
+    = link_to image_tag('apply.gif'), new_job_application_path(@job)
+  %p
+    = link_to 'All Jobs', jobs_path

@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title><%= @title || "[WFAS] WorkForAStartup - An online channel for Indian startups to attract talent - Startup Jobs India" %></title>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <meta name="verify-v1" content="jpcsDyh4RG2ZIKVF+UOsnr4sy2oTcsVXOXomMN3I2UI=" />
+  <meta content="WorkForAStartup is an online channel for Indian startups to attract potential talent. A job search engine and portal exclusively for Indian startups having employee strength from 1-500." name="description"/>
+  <meta content="WorkForAStartup, Work for a startup, Startup Jobs, Startup Jobs India, Mortar Systems, Mortar, Systems, Chandigarh, India, Jobs, Startups, Startups India, internships, apprenticeships, Jobs India, Internships India, Apprenticeships India" name="keywords"/>
+  <meta content="Mortar Systems" name="author"/>
+  <link rel="icon" href="/favicon.gif" type="image/gif" />
+  <link href="http://<%= HOST %>/jobs.atom" title="RSS" type="application/atom+xml" rel="alternate"/>
+  <style type='text/css'>@import url('http://s3.amazonaws.com/getsatisfaction.com/feedback/feedback.css');</style>
+  <%= stylesheet_link_tag 'feedback.css', :type => 'text/css', :media => 'screen, projection' %>
+  <%= stylesheet_link_tag 'blueprint/screen.css', 'wfas.css', :type => 'text/css', :media => 'screen, projection', :cache => true %>
+  <%= yield :header %>
+  <!--[if IE 7]>
+    <%= stylesheet_link_tag 'blueprint/ie.css', :type => 'text/css', :media => 'screen, projection' %>
+  <![endif]-->
+</head>
+<body>
+  <%= render :partial => "layouts/header" %>
+  <div class="container">
+    <div id="breadcrumbs">
+      <%= yield :breadcrumbs %>
+    </div>
+    <% if flash[:error] %>
+      <div class="error" id="error"><%= flash[:error] %></div>
+    <% elsif flash[:notice] %>
+      <div class="success" id="success"><%= flash[:notice] %></div>
+    <% end %>
+    <div class="span-16" id="content">
+      <%= yield  %>
+    </div>
+    <div id="sidebar">
+      <div class="sidebar-container">
+        <% cache(:controller => "/base", :action => "search") do %>
+          <%= render :partial => "layouts/search" %>
+        <% end %>
+      </div>
+      <hr/>
+      <%= yield :sidebar %>
+      <div class="sidebar-container">
+        <% cache(:controller => "/base", :action => "industries") do %>
+          <%= render :partial => "layouts/browse_jobs_by_industry" %>
+        <% end %>
+      </div>
+    </div>
+    <br />
+  </div>
+  <%= yield :tour %>
+  </div>
+  <%= render :partial => "layouts/footer" %>
+  <script src='http://s3.amazonaws.com/getsatisfaction.com/feedback/feedback.js' type='text/javascript'></script>
+  <script type="text/javascript" charset="utf-8">
+    var tab_options = {}
+    tab_options.placement = "left";  // left, right, bottom, hidden
+    tab_options.color = "#111"; // hex (#FF0000) or color (red)
+    GSFN.feedback('http://getsatisfaction.com/wfas/feedback/topics/new?display=overlay&style=question', tab_options);
+  </script>
+  <!-- Google Analytics -->
+  <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+  <script type="text/javascript">
+    try {
+      var pageTracker = _gat._getTracker("UA-8309363-1");
+      pageTracker._trackPageview();
+      } 
+    catch(err) {}
+  </script>
+</body>
+</html>

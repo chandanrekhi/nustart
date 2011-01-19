@@ -1,0 +1,55 @@
+<h1>Displaying User</h1>
+
+<p>
+  <b>Name:</b>
+  <%=h @admin_user.name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @admin_user.email %>
+</p>
+
+<p>
+  <b>Crypted password:</b>
+  <%=h @admin_user.crypted_password %>
+</p>
+
+<p>
+  <b>Salt:</b>
+  <%=h @admin_user.salt %>
+</p>
+
+<p>
+  <b>Created at:</b>
+  <%=h @admin_user.created_at %>
+</p>
+
+<p>
+  <b>Updated at:</b>
+  <%=h @admin_user.updated_at %>
+</p>
+
+<p>
+  <b>Remember token:</b>
+  <%=h @admin_user.remember_token %>
+</p>
+
+<p>
+  <b>Remember token expires at:</b>
+  <%=h @admin_user.remember_token_expires_at %>
+</p>
+
+<p>
+  <b>Activation code:</b>
+  <%=h @admin_user.activation_code %>
+</p>
+
+<p>
+  <b>Activated at:</b>
+  <%=h @admin_user.activated_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_user_path(@admin_user) %> |
+<%= link_to 'Back', admin_users_path %>

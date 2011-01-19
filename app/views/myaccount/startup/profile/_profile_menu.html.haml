@@ -1,0 +1,26 @@
+#profile-menu.left.span-16
+  %ul
+    %li
+      - if params[:controller] == "myaccount/startup/profile"
+        = link_to 'My Profile', myaccount_root_path, :class => "active"
+      - else
+        = link_to 'My Profile', myaccount_root_path
+    %li
+      - if params[:controller] == "myaccount/startup/jobs" and %w(index show edit update).include?(params[:action])
+        = link_to 'My Job openings', myaccount_startup_jobs_path, :class => "active"
+      - else
+        = link_to 'My Job openings', myaccount_startup_jobs_path
+        
+    %li
+      - if params[:controller] == "myaccount/startup/jobs" and %w(new create).include?(params[:action])
+        = link_to 'Post a Job', new_myaccount_startup_job_path, :class => "active"
+      - else
+        = link_to 'Post a Job', new_myaccount_startup_job_path
+            
+    %li
+      - if params[:controller] == "myaccount/startup/job_applications" and %w(show index listing_all).include?(params[:action])
+        = link_to 'Job applications', myaccount_startup_all_job_applications_path, :class => "active"
+      - else
+        = link_to 'Job applications', myaccount_startup_all_job_applications_path
+    %li
+      = link_to 'Logout', logout_path

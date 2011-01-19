@@ -1,0 +1,42 @@
+# MySQL.  Versions 4.1 and 5.0 are recommended.
+#
+# Install the MySQL driver:
+#   gem install mysql
+# On Mac OS X:
+#   sudo gem install mysql -- --with-mysql-dir=/usr/local/mysql
+# On Mac OS X Leopard:
+#   sudo env ARCHFLAGS="-arch i386" gem install mysql -- --with-mysql-config=/usr/local/mysql/bin/mysql_config
+#       This sets the ARCHFLAGS environment variable to your native architecture
+# On Windows:
+#   gem install mysql
+#       Choose the win32 build.
+#       Install MySQL and put its /bin directory on your path.
+#
+# And be sure to use new-style password hashing:
+#   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
+
+local_db: &local_db
+  adapter: mysql
+  username: root
+  password: 
+  host: localhost
+  encoding: utf8
+  socket: /var/run/mysqld/mysqld.sock
+  
+<% branch_name = `/usr/local/git/bin/git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* (.*)/1/'`.strip.gsub(/[* ]/, '') %>
+
+development:
+  <<: *local_db
+  database: <%= "wfas_dev_#{branch_name}" %>
+
+test:
+  <<: *local_db
+  database: <%= "wfas_test_#{branch_name}" %>
+
+staging:
+  <<: *local_db
+  database: <%= "wfas_staging_#{branch_name}" %>
+      
+production:
+  <<: *local_db
+  database: wfas

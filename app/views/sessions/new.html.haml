@@ -1,0 +1,29 @@
+= content_for :breadcrumbs do
+  = link_to 'Home', root_path
+  &raquo;
+  Login
+
+%h2
+  Existing Startups login here
+
+- form_tag session_path do
+  %p
+    = label_tag 'email *'
+    %br
+    = text_field_tag 'login', @login
+
+  %p
+    = label_tag 'password *'
+    %br
+    = password_field_tag 'password', nil
+
+  %p
+    = label_tag 'remember_me', 'Remember me'
+    = check_box_tag 'remember_me', '1', @remember_me
+
+  %p
+    = submit_tag 'Log in'
+    or
+    = link_to "Signup", signup_path
+
+= link_to "Forgot Password", forgot_password_url, :id=>"forgot_password_link"

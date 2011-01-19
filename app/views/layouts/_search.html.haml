@@ -1,0 +1,19 @@
+#search
+  %h4 Search Jobs
+  - form_tag "/search", :method => 'get' do
+    %p
+      Keywords
+      %br/
+      = text_field_tag :query, ""
+    %p
+      Location
+      %span.quiet (Optional)
+      %br/
+      = text_field_tag :location, ""
+    %p
+      Industry
+      %span.quiet (Optional)
+      %br/
+      = select_tag("industry", '<option value=""></option>' + options_from_collection_for_select(Industry.all, 'id', 'name'))
+    %p
+      = submit_tag "Search", :name => nil

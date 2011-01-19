@@ -1,0 +1,15 @@
+= content_for :breadcrumbs do
+  = link_to 'My Account', myaccount_startup_profile_path
+  &raquo;
+  Profile
+  &raquo;
+  Edit
+  
+%h4 Editing Profile
+
+- form_for(:startup_profile, @startup_profile, :url => { :controller => "/myaccount/startup/profile" }, :html => { :method => 'put', :multipart => true }) do |f|
+  = render :partial => 'form', :locals => {:f => f}
+  %p
+    = f.submit "Update"
+    or
+    = link_to 'Cancel', myaccount_startup_profile_path

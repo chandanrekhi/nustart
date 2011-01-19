@@ -1,0 +1,39 @@
+= content_for :breadcrumbs do
+  = link_to 'My Account', myaccount_startup_profile_path
+  &raquo;
+  - if @myaccount_startup_job
+    = link_to 'Job Openings', myaccount_startup_jobs_path
+    &raquo;
+    = link_to @myaccount_startup_job.title, myaccount_startup_job_path(@myaccount_startup_job)
+    &raquo;
+  Job Applications
+  
+%h4 
+  = render :partial => "count"
+
+%table{ :cellspacing => 0, :cellpadding => 0}
+  %thead
+    %tr
+      %th.first Subject
+      %th Applicant
+      %th Job Opening
+      %th.last Applied on
+
+  - for myaccount_startup_job_application in @myaccount_startup_job_applications
+    %tbody
+      %tr
+        %td.title.span-4.left-border
+          = link_to myaccount_startup_job_application.subject, myaccount_startup_job_application_path(myaccount_startup_job_application.job, myaccount_startup_job_application), :title => "#{myaccount_startup_job_application.cover_letter_source}"
+        %td.span-4
+          = link_to myaccount_startup_job_application.name, myaccount_startup_job_get_resume_path(myaccount_startup_job_application.job, myaccount_startup_job_application)
+        %td.title.span-4
+          = link_to myaccount_startup_job_application.job.title, myaccount_startup_job_path(myaccount_startup_job_application.job), :title => "#{myaccount_startup_job_application.job.overview_source}"
+        %td.span-3.right-border
+          = myaccount_startup_job_application.created_at.to_date.to_formatted_s(:long)
+
+.table_bottom
+
+- if params[:action] == "index"
+  = link_to 'All Job Applications', myaccount_startup_all_job_applications_path
+  
+= will_paginate @myaccount_startup_job_applications

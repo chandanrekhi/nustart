@@ -1,0 +1,20 @@
+= content_for :breadcrumbs do
+  = link_to 'Home', root_path
+  &raquo;
+  - unless @letter
+    Startups
+  - else
+    = link_to 'Startups', startups_path
+    &raquo;
+    = @letter
+    
+    
+-cache(:controller => "/base", :action => "startup_letters") do
+  = render :partial => "alphabets"
+
+-if @letter
+  -cache({ :letter => @letter, :page => params[:page] || 1 }) do
+    = render :partial => "common_startups"
+-else
+  -cache({ :page => params[:page] || 1 }) do
+    = render :partial => "common_startups"

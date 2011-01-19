@@ -1,0 +1,28 @@
+%h4
+  = render :partial => "count"
+  
+%table{ :cellspacing => 0, :cellpadding => 0}
+  %thead
+    %tr
+      %th.first
+      %th Startup Name
+      %th Based in
+      %th.last Url
+  
+  - unless @startups.empty?
+    %tbody
+      - for startup in @startups
+        %tr
+          %td.span-2.logo.left-border
+            = link_to(image_tag(startup.startup_profile.logo.url(:thumb)), startup_path(startup)) if startup.startup_profile and !startup.startup_profile.logo_file_name.nil?
+          %td.span-4.title
+            - if startup.startup_profile
+              = link_to startup.name, startup_path(startup), :title => "#{startup.startup_profile.about_source}"
+            - else
+              = link_to startup.name, "#"
+          %td.span-4
+            = startup.startup_profile.city + " - " + startup.startup_profile.state if startup.startup_profile
+          %td.span-4.right-border
+            = link_to startup.startup_profile.url, startup.startup_profile.url, :target => "_blank" if startup.startup_profile 
+                 
+.table_bottom

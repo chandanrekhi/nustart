@@ -1,0 +1,23 @@
+%h1 Listing Industries
+
+%table{ :cellspacing => 0, :cellpadding => 0}
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th
+      %th
+      %th
+
+  %tbody
+    - for admin_industry in @admin_industries
+      %tr
+        %td=h admin_industry.name
+        %td=h admin_industry.description
+        %td= link_to 'Show', admin_industry_path(admin_industry)
+        %td= link_to 'Edit', edit_admin_industry_path(admin_industry)
+        %td= link_to 'Destroy', admin_industry_path(admin_industry), :confirm => 'Are you sure?', :method => :delete
+
+%br/
+
+= link_to 'New industry', new_admin_industry_path

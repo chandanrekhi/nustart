@@ -1,0 +1,33 @@
+%li
+  - if (params[:controller] == "jobs" and (params[:action] == "index" or params[:action] == "show" or params[:action] == "listing_by_tag" or params[:action] == "listing_by_industry")) or params[:controller] == "search" or params[:controller] == "job_applications"
+    = link_to 'Jobs', root_path, :class => "active"
+  - else
+    = link_to 'Jobs', root_path
+
+%li
+  - if params[:controller] == "startups"
+    = link_to 'Startups', startups_path, :class => "active"
+  - else
+    = link_to 'Startups', startups_path
+ 
+- unless logged_in?
+  %li
+    = link_to 'Post a job', new_myaccount_startup_job_path
+- else
+  %li
+    - if params[:controller].include?("myaccount/startup")
+      = link_to 'My Account', myaccount_root_path, :class => "active"
+    - else
+      = link_to 'My Account', myaccount_root_path
+          
+%li
+  - if params[:action].include?("faq")
+    = link_to 'FAQ', faq_path, :class => "active"
+  - else
+    = link_to 'FAQ', faq_path
+    
+%li
+  - if params[:action].include?("tour")
+    = link_to 'Tour', tour_path, :class => "active"
+  - else
+    = link_to 'Tour', tour_path

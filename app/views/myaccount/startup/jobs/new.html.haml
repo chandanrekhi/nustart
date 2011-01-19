@@ -1,0 +1,39 @@
+= content_for :breadcrumbs do
+  = link_to 'My Account', myaccount_startup_profile_path
+  &raquo;
+  = link_to 'Job Openings', myaccount_startup_jobs_path
+  &raquo;
+  Post a Job
+  
+%h4 Post new job opening
+
+- form_for([:myaccount_startup, @job]) do |f|
+  = f.error_messages
+  %p
+    = f.label :title
+    *
+    %br/
+    %span.quiet
+      e.g. J2EE programmer
+    %br/
+    %span.red
+      once created you won't be able to change
+    %br/
+    = f.text_field :title
+    
+  %p
+    = f.label :location
+    %br/
+    %span.quiet
+      only if different to your startup's location
+    %br/
+    %span.red
+      once created you won't be able to change
+    %br/
+    = f.text_field :location
+      
+  = render :partial => 'form', :locals => {:f => f}
+  %p
+    = f.submit "Create"
+    or
+    = link_to 'Cancel', myaccount_startup_jobs_path

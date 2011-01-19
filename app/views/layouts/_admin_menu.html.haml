@@ -1,0 +1,32 @@
+%div.menu.span-17
+  %ul
+    
+    %li 
+      - if params[:controller] == "admin/dashboard"
+        = link_to 'Dashboard', admin_root_path, :class => "active"
+      - else
+        = link_to 'Dashboard', admin_root_path
+        
+    %li
+      - if params[:controller] == "admin/users"
+        = link_to 'Users', admin_users_path, :class => "active"
+      - else
+        = link_to 'Users', admin_users_path
+        
+    %li
+      - if params[:controller] == "admin/jobs"
+        = link_to 'Jobs', admin_jobs_path, :class => "active"
+      - else
+        = link_to 'Jobs', admin_jobs_path
+    
+      %li
+        - if params[:controller] == "admin/job_applications"
+          = link_to 'Job Applications', admin_job_applications_path, :class => "active"
+        - else
+          = link_to 'Job Applications', admin_job_applications_path
+                
+    %li
+      - if params[:controller] == "admin/industries"
+        = link_to 'Industries', admin_industries_path, :class => "active"
+      - else
+        = link_to 'Industries', admin_industries_path

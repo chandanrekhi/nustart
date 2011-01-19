@@ -1,0 +1,8 @@
+= content_for :breadcrumbs do
+  = link_to 'My Account', myaccount_startup_profile_path
+  &raquo;
+  Job Openings
+  
+= render :partial => "jobs/jobs"
+
+= will_paginate @jobs

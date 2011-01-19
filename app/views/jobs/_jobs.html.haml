@@ -1,0 +1,52 @@
+%h4#rss
+  %span
+    = render :partial => "jobs/count"
+  - unless params[:controller].include?("myaccount")
+    - if @tag
+      = link_to image_tag('feed-icon-14x14.png'), jobs_by_tag_path(@tag, :atom)
+    - elsif @industry
+      = link_to image_tag('feed-icon-14x14.png'), jobs_by_industry_path(@industry, :atom)
+    - elsif @query
+      = link_to image_tag('feed-icon-14x14.png'), :controller => "search", :action => "index", :query => @query, :format => :atom
+    - else
+      = link_to image_tag('feed-icon-14x14.png'), jobs_path(:atom)
+  
+%table{ :cellspacing => 0, :cellpadding => 0}
+  %thead
+    %tr
+      %th.first Job Title
+      - unless logged_in? and params[:controller].include?("myaccount")      
+        %th
+        %th Startup
+        %th.last Location
+      - else
+        %th Created on
+        %th Applications
+        %th State
+        %th.last Auto Renewal
+  - unless @jobs.empty?
+    %tbody
+      - for job in @jobs
+        %tr
+          - unless logged_in? and params[:controller].include?("myaccount")
+            %td.title.span-7.left-border
+              = link_to shorten(job.title, 75), job_path(job), :title => "#{job.overview_source}"
+            %td.span-2.logo
+              = link_to(image_tag(job.startup.startup_profile.logo.url(:thumb)), startup_path(job.startup)) unless job.startup.startup_profile.logo_file_name.nil?
+            %td.span-5
+              = link_to job.startup.name, startup_path(job.startup), :title => "#{job.startup.startup_profile.about_source}"
+            %td.span-3.right-border
+              = job.location? ? job.location : job.startup.startup_profile.city
+          - else
+            %td.title.span-4.left-border
+              = link_to shorten(job.title, 75), myaccount_startup_job_path(job), :title => "#{job.overview_source}"     
+            %td.span-3
+              = job.created_at.to_date.to_formatted_s(:long)
+            %td.span-2
+              = link_to "View (#{job.job_applications.count})", myaccount_startup_job_applications_path(job)
+            %td.span-2
+              = job.state.humanize if job.state
+            %td.span-2.right-border{:id => "td_auto_renew_#{job.id}"}  
+              = render :partial => '/jobs/check_box_auto_renew', :locals => { :job => job }
+              
+.table_bottom

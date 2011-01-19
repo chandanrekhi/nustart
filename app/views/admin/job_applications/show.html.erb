@@ -1,0 +1,28 @@
+<h1>Displaying Application</h1>
+
+<p>
+  <b>Name:</b>
+  <%= link_to @admin_job_application.name, myaccount_startup_job_get_resume_path(@admin_job_application.job, @admin_job_application) %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @admin_job_application.email %>
+</p>
+
+<p>
+  <b>Subject:</b>
+  <%=h @admin_job_application.subject %>
+</p>
+
+<p>
+  <b>Cover letter:</b>
+  <%=h @admin_job_application.cover_letter %>
+</p>
+
+<p>
+  <b>Created at:</b>
+  <%=h @admin_job_application.created_at.to_date.to_formatted_s(:long) %>
+</p>
+
+<%= link_to 'Back', admin_job_applications_path %>

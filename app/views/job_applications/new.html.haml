@@ -1,0 +1,21 @@
+= content_for :breadcrumbs do
+  = link_to 'Jobs', jobs_path
+  &raquo;
+  = link_to @job.title, job_path(@job)
+  &raquo;
+  Apply
+  
+#jobapp_form
+
+  %h4 
+    Application for 
+    %span.quiet.underline{ :title => @job.overview_source }
+      = @job.title
+
+  - form_for(:job_application, @job_application, :url => { :controller => "job_applications", :action => "create" }, :html => { :multipart => true }) do |f|
+
+    = render :partial => 'form', :locals => {:f => f}
+    %p
+      = f.submit "Submit"
+      or
+      = link_to 'Cancel', job_path(@job)

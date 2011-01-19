@@ -1,0 +1,27 @@
+= content_for :breadcrumbs do
+  = link_to 'Home', root_path
+  &raquo;
+  Signup
+  
+- @startup.password = @startup.password_confirmation = nil
+
+%h2
+  Startups - Create your profile and Post jobs for free
+  
+%div{:style=>"background: #EED; border:1px solid #EDD;margin-bottom:20px;padding:10px;"}
+  %h5{:style=>"margin-bottom:0;"}
+    Are you a startup?
+  Please sign up only if you are a startup with 1-100 employees (doesn't matter funded or not).
+  %br/
+  %br/  
+  %h5{:style=>"margin-bottom:0;"}
+    HR agencies or 3rd party recruiters
+  We respect you but unfortunately we don't provide services to you as of now. Contact us if you want to stay in touch with us on when we launch our services for 3rd party recruiters.
+
+= javascript_include_tag :defaults, :cache => true
+= javascript_include_tag 'ajax_validation', :cache => 'ajax_validation'
+
+= error_messages_for :startup
+
+- form_for @startup, :builder => WfasFormBuilder, :url => users_path do |f|
+  = render :partial => "form", :locals => { :f => f }

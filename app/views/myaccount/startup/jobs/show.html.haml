@@ -1,0 +1,72 @@
+= content_for :breadcrumbs do
+  = link_to 'My Account', myaccount_startup_profile_path
+  &raquo;
+  = link_to 'Job Openings', myaccount_startup_jobs_path
+  &raquo;
+  = @job.title
+  
+= content_for :sidebar do 
+  .sidebar-container.span-6
+    %h4 
+      My Other Job Openings
+    %ul
+      - for job in @other_jobs - [@job]
+        %li 
+          = link_to job.title, myaccount_startup_job_path(job), :title => "#{job.overview_source}"
+  %hr
+
+.heading.span-15#title-heading
+  .span-15
+    %h2.title= @job.title
+    - unless @job.job_applications.empty?
+      %p
+        = link_to "View Applications received", myaccount_startup_job_applications_path(@job)
+    %p
+      - if @job.expires_at > Time.now
+        %span.quiet.regular 
+          = @job.renewed_at.to_date.to_formatted_s(:long)
+          to
+          = @job.expires_at.to_date.to_formatted_s(:long)
+      - else
+        %span.red
+          Expired on :
+          (
+          = @job.expires_at.to_date.to_formatted_s(:long)
+          )
+        %span{:id => "td_auto_renew_#{@job.id}"}
+          = render :partial => '/jobs/check_box_auto_renew', :locals => { :job => @job }
+        Auto Renewal
+
+  .span-15
+    %span.bold Tags:
+    .tags.quiet.left
+      = @job.tag_list.to_sentence
+        
+.heading.span-15 
+  %span.bold Overview:
+  .quiet= @job.overview
+
+.heading.span-15 
+  %span.bold Responsibilities:
+  .quiet= @job.responsibilities
+
+.heading.span-15 
+  %span.bold Experience:
+  .quiet= @job.experience
+
+.heading.span-15 
+  %span.bold Education:
+  .quiet= @job.education
+
+.heading.span-15 
+  %span.bold Skills:
+  .quiet= @job.skills
+
+.heading.span-15 
+  %span.bold Compensation:
+  .quiet= @job.compensation
+
+.bottom-links
+  = link_to 'Edit', edit_myaccount_startup_job_path(@job)
+  |
+  = link_to 'My Job openings', myaccount_startup_jobs_path

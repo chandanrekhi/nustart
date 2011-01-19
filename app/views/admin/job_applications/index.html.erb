@@ -1,0 +1,29 @@
+<h1>Listing Applications</h1>
+
+<table cellspacing="0" cellpadding="0">
+  <thead>
+    <tr>
+      <th>Applicant</th>
+      <th>Subject</th>
+      <th>Email</th>
+      <th>Job Opening</th>
+      <th>Created at</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% for admin_job_application in @admin_job_applications %>
+      <tr>
+        <td><%= link_to admin_job_application.name, myaccount_startup_job_get_resume_path(admin_job_application.job, admin_job_application) %></td>
+        <td><%=h admin_job_application.subject %></td>
+        <td><%=h admin_job_application.email %></td>
+        <td><%= link_to admin_job_application.job.title, admin_job_path(admin_job_application.job) %></td>
+        <td><%=h admin_job_application.created_at.to_date.to_formatted_s(:long) %></td>
+        <td><%= link_to 'Show', admin_job_application_path(admin_job_application) %></td>
+        <td><%= link_to 'Destroy', admin_job_application_path(admin_job_application), :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

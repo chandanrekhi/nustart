@@ -1,0 +1,13 @@
+<h1>Editing User</h1>
+
+
+<% form_for(:user, @admin_user, :url => admin_user_path(@admin_user), :html => {:method => :put}) do |f| %>
+
+  <%= render :partial => 'form', :locals => {:f => f} %>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', admin_user_path(@admin_user) %> |
+<%= link_to 'Back', admin_users_path %>

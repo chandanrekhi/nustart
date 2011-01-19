@@ -1,0 +1,43 @@
+.container
+  #footer
+    #footer_menu.span-16
+      %p
+        = link_to "Jobs", jobs_path
+        |
+        = link_to "Startups", startups_path
+        |
+        = link_to "Post a Job", new_myaccount_startup_job_path
+        |
+        = link_to "About", about_path
+        |
+        = link_to 'Support', "http://getsatisfaction.com/wfas", :target => "_blank"
+        |
+        = link_to 'Survey', "http://workforastartup.wufoo.com/forms/web-site-visitor-survey/", :target => "_blank"
+        |
+        = link_to "Blog", "http://blog.workforastartup.in/", :target => "_blank"
+        |
+        = link_to 'Twitter', 'http://twitter.com/workforastartup', :target => "_blank"
+        |
+        = link_to "Contact", contact_path
+      %p
+        WorkForAStartup.in is an online job search engine and portal for Indian startups to attract potential talent. 
+    -cache(:controller => "/base", :action => "tags") do
+      .tags.span-7
+        - tag_cloud Job.tag_counts, %w(css1 css2 css3 css4) do |tag, css_class|
+          = link_to tag.name, jobs_by_tag_path(tag.name, :html), :class => css_class
+        
+  #footer_bottom
+    %span
+      All rights reserved &copy; 2009-2010
+      = link_to "Mortar Systems", "http://mortarsystems.com", :target => "_blank"
+      %br/
+      Theme Laguna v1.0   
+      %br/
+      = link_to "Terms of Service", terms_path
+      |
+      = link_to "Privacy Policy", policy_path
+      %br/
+      Valid
+      = link_to 'XHTML', "http://validator.w3.org/check/referer"
+      and
+      = link_to 'CSS', "http://jigsaw.w3.org/css-validator/check/referer"

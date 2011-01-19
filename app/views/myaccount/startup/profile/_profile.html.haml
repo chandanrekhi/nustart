@@ -1,0 +1,51 @@
+.heading
+  %span.bold Name:
+  %h2= @startup_profile.startup.name
+  %span.bold Email:
+  %h3.quiet= @startup_profile.startup.email
+
+.heading
+  = image_tag(@startup_profile.logo.url(:big))
+  
+.heading.text-justify
+  %span.bold About:
+  .quiet= @startup_profile.about
+
+.heading.span-8
+  %span.bold URL:
+  .quiet= @startup_profile.url
+
+.heading
+  %span.bold Industry:
+  .quiet= @startup_profile.industry ? @startup_profile.industry.name : "&nbsp;"
+    
+.heading.span-8
+  %span.bold Funding:
+  .quiet= @startup_profile.funding == true ? "Yes" : "No"
+
+.heading
+  %span.bold Employees:
+  .quiet= @startup_profile.employees
+
+.heading.span-8
+  %span.bold Address1:
+  .quiet= @startup_profile.address1
+
+.heading
+  %span.bold Address2:
+  .quiet= @startup_profile.address2.blank? ? "&nbsp;" : @startup_profile.address2
+
+.heading.span-8
+  %span.bold City:
+  .quiet= @startup_profile.city
+  
+.heading
+  %span.bold State:
+  .quiet= @startup_profile.state
+
+.heading
+  %span.bold Pincode:
+  .quiet= @startup_profile.pincode.blank? ? "&nbsp;" : @startup_profile.pincode
+
+.span-16
+  = link_to 'Edit', edit_myaccount_startup_profile_path

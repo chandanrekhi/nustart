@@ -1,0 +1,14 @@
+= content_for :breadcrumbs do
+  - unless @query
+    Home
+  - else
+    = link_to 'Jobs', jobs_path
+    &raquo;
+    = @query
+  
+-if @query
+  -cache({ :controller => "base", :action => "jobs", :query => @query, :page => params[:page] || 1 }) do
+    = render :partial => "common_jobs"
+-else
+  -cache({ :controller => "base", :action => "jobs", :page => params[:page] || 1 }) do
+    = render :partial => "common_jobs"

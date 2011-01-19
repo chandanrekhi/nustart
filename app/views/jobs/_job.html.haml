@@ -1,0 +1,62 @@
+= content_for :header do
+  = stylesheet_link_tag 'blueprint/print.css', :type => 'text/css', :media => 'print'
+  
+= content_for :sidebar do 
+  .sidebar-container.span-6
+    -cache(:other_jobs => "other_jobs", :id => @job.id) do
+      %h4 
+        Other Job Openings at 
+        %span.quiet.underline= @job.startup.name
+      %ul
+        - @other_jobs = @job.startup.jobs.find(:all) - @job.to_a
+        - unless @other_jobs.empty?
+          - for job in @other_jobs
+            %li 
+              = link_to job.title, job_path(job), :title => "#{job.overview_source}"      
+
+  %hr
+
+-cache( :id => @job.id ) do
+  .heading.span-16#title-heading
+    .span-11
+      %h2.title= @job.title
+      %p
+        at 
+        = link_to(@job.startup.name, startup_path(@job.startup), :class=>"name-link")
+        &nbsp;in
+        = @job.location? ? @job.location : @job.startup.startup_profile.city + ", " + @job.startup.startup_profile.state
+      %p
+        %span.quiet.regular= @job.renewed_at.to_date.to_formatted_s(:long)
+    .logo
+      =image_tag @job.startup.startup_profile.logo.url(:small)
+
+    .span-16
+      .tags.left
+        - @job.tag_list.each do |tag|
+          = link_to tag.capitalize, jobs_by_tag_path(tag, :html)
+      .print-links.quiet.right.text-right
+        = link_to_function("Print", "javascript:print()")
+        
+  .heading.span-16 
+    %span.bold Overview:
+    .quiet= @job.overview
+
+  .heading.span-16 
+    %span.bold Responsibilities:
+    .quiet= @job.responsibilities
+
+  .heading.span-16 
+    %span.bold Experience:
+    .quiet= @job.experience
+
+  .heading.span-16 
+    %span.bold Education:
+    .quiet= @job.education
+
+  .heading.span-16 
+    %span.bold Skills:
+    .quiet= @job.skills
+
+  .heading.span-16 
+    %span.bold Compensation:
+    .quiet= @job.compensation

@@ -1,0 +1,34 @@
+%h2 Admin - Dashboard
+
+/ %p.span-12.left
+/  = Gchart.pie( |
+/  :data => @all_jobs_created_for_pie_chart[:data], |
+/  :title => 'All Users', |
+/  :size => '400x200', |
+/  :labels => @all_users_for_pie_chart[:labels], |
+/  :format => 'image_tag', |
+/  :theme=>:pastel) |
+/
+
+%p.span-12.left
+  %span
+    = Gchart.pie( |
+    :data => @all_startups_for_pie_chart[:data], |
+    :title => "Startups in 12, 6, 3, 1 months", |
+    :size => '400x200', |
+    :labels => @all_startups_for_pie_chart[:labels], |
+    :format => 'image_tag') |
+  %span
+    =# Gchart.pie( |
+    :data => @all_agencies_for_pie_chart[:data], |
+    :title => "Agencies in 12, 6, 3, 1 months", |
+    :size => '400x200', |
+    :labels => @all_agencies_for_pie_chart[:labels], |
+    :format => 'image_tag') |
+  %span
+    =# Gchart.pie( |
+    :data => @all_candidates_for_pie_chart[:data], |
+    :title => "Candidates in 12, 6, 3, 1 months", |
+    :size => '400x200', |
+    :labels => @all_candidates_for_pie_chart[:labels], |
+    :format => 'image_tag') |

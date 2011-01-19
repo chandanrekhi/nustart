@@ -1,0 +1,3 @@
+JobApplicationMailer#successfully_applied
+
+Find me in app/views/job_application_mailer/successfully_applied.erb

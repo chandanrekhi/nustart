@@ -1,0 +1,17 @@
+#header_top
+  .container
+    = render :partial => "layouts/header_top"
+
+#header
+  .container
+    .logo
+      = render :partial => "layouts/logo"
+            
+    .span-24
+      .menu
+        - if current_user.kind_of?(Manager)
+          %ul.span-24.left
+            = render :partial => "layouts/admin_menu"
+        - else
+          %ul.span-24.left
+            = render :partial => "layouts/menu"

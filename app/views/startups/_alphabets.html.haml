@@ -1,0 +1,4 @@
+.alphabets
+  %p
+    - ('A'..'Z').each do |letter|
+      = link_to letter, startups_by_letter_path(letter)

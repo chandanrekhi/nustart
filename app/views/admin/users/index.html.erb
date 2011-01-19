@@ -1,0 +1,38 @@
+<h1>Listing Users</h1>
+
+<table cellspacing="0" cellpadding="0">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% for admin_user in @admin_users %>
+      <tr>
+        <td><%= link_to admin_user.name, admin_user_path(admin_user) %></td>
+        <td><%= admin_user.email %></td>
+        <td class="logo span-2">
+          <% if admin_user.kind_of?(Startup) %>
+            <%= link_to(image_tag(admin_user.startup_profile.logo.url(:thumb)), admin_user_path(admin_user)) if admin_user.startup_profile and admin_user.startup_profile.logo_file_name
+            %>
+          <% end %>
+        </td>
+        <td><%= link_to 'Show', admin_user_path(admin_user) %></td>
+        <td><%= link_to 'Edit', edit_admin_user_path(admin_user) %></td>
+        <td><%= link_to 'Destroy', admin_user_path(admin_user), :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br />
+
+<%= will_paginate @admin_users %>
+
+<%= link_to 'New user', new_admin_user_path %>

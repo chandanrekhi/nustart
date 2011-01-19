@@ -1,0 +1,3 @@
+JobApplicationMailer#received_new
+
+Find me in app/views/job_application_mailer/received_new.erb

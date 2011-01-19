@@ -1,0 +1,3 @@
+JobMailer#jobs_expiring_now
+
+Find me in app/views/job_mailer/jobs_expiring_now.erb
