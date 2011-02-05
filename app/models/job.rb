@@ -45,7 +45,7 @@ class Job < ActiveRecord::Base
   # Post jobs on Twitter
   include HTTParty
   base_uri 'twitter.com'
-  basic_auth 'workforastartup', 'sher28MIE'
+  basic_auth 'username', 'password'
   
   # Associations
   belongs_to :startup
